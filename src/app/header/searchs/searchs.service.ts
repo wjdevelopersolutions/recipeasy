@@ -8,7 +8,6 @@ export class SearchsService implements OnInit {
     searchForm = new Subject<FormGroup>();
     databaseChange = new Subject<any[]>();
     recentSearchingChanges = new Subject<any[]>();
-    ukDrop: ElementRef;
 
     recentSearching: any[] = [];
     database: any[] = [
@@ -75,7 +74,7 @@ export class SearchsService implements OnInit {
 
     ngOnInit()
     {
-      console.log(this.ukDrop)
+   
     }
 
 
