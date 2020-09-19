@@ -9,12 +9,20 @@ export class SearchbarPipe implements PipeTransform {
         
 
         let valueReturned = [];
-        const termino = args[0].toLowerCase();
+        const termino = String(args[0]).toLowerCase();
         
-        value.forEach( data => {
-          if (data.name.indexOf(termino) >= 0) {
-            valueReturned.push(data);
+        value.forEach( (data: {name: string, image: string}) => {
+
+          if (termino === '') {
+            return valueReturned = [];
           }
+
+          if (data.name.indexOf(termino) >= 0) {
+            if ( data.name.length > 15 ) 
+               data.name = `${data.name.slice(0, 15)} ...`;
+            valueReturned.push(data);
+          } 
+
         });
         
         return valueReturned;

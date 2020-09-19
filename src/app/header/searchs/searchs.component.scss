@@ -2,5 +2,18 @@
     .uk-search-input {
         min-width: 200px !important;
         border-radius: 30px;
+        border: none;
+        background-color: #f8f8f8;
+    }
+    .uk-card {
+        .uk-no-recent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .uk-card-title {
+            font-size: 1.2rem;
+        }
     }
 }

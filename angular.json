@@ -127,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "recipeasy"
+    }
+  },
+  "defaultProject": "recipeasy",
+  "cli": {
+    "analytics": "8c383035-347e-4f59-8c64-e405e9751b48"
+  }
 }

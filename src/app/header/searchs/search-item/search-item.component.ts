@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Host } from '@angular/core';
+import { SearchsService } from '../searchs.service';
+declare var UIkit;
 
 @Component({
   selector: 'app-search-item',
@@ -9,8 +11,16 @@ export class SearchItemComponent implements OnInit {
 
   @Input('dbs') item;
 
-  constructor() {}
+  constructor(
+    private _SearchsService: SearchsService
+  ) {}
 
   ngOnInit(): void {}
+
+  onAddRecentSearching()
+  {
+    this._SearchsService.addRecentSearching( this.item );
+    UIkit.drop(this._SearchsService.ukDrop).hide();
+  }
 
 }

@@ -1,9 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, ElementRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class SearchsService {
+export class SearchsService implements OnInit {
+    
+    searchForm = new Subject<FormGroup>();
+    databaseChange = new Subject<any[]>();
+    recentSearchingChanges = new Subject<any[]>();
+    ukDrop: ElementRef;
 
-    database: [
+    recentSearching: any[] = [];
+    database: any[] = [
         {
           name: 'marcos castillo',
           image: 'https://scontent.fsti4-2.fna.fbcdn.net/v/t1.0-1/s200x200/118232106_10215112898134369_1048496554445355837_n.jpg?_nc_cat=101&_nc_sid=7206a8&_nc_eui2=AeFBAmuT-lDJhwXmI91U6rAgWB5BxDn2RgRYHkHEOfZGBElXZSuihiJ-FVb2b8Ro5pooqGG8fLiw5uudbZbPK58W&_nc_ohc=UcskCdbwgpMAX9tFn9Y&_nc_ht=scontent.fsti4-2.fna&tp=7&oh=60eb90af868685962a238d28b1f1a340&oe=5F86D04D'
@@ -46,11 +54,29 @@ export class SearchsService {
         }
     ]
 
-    async getDatabase()
-    { return this.database }
+    getDatabase(): any[]
+    { 
+      return this.database.slice();
+    }
+
+    getRecentSearching(): any[]
+    { 
+      return this.recentSearching.slice();
+    }
 
     constructor()
     {}
+
+    addRecentSearching( data: any )
+    {
+      this.recentSearching.push( data );
+      this.recentSearchingChanges.next(this.recentSearching.slice());
+    }
+
+    ngOnInit()
+    {
+      console.log(this.ukDrop)
+    }
 
 
 }

@@ -1,7 +1,10 @@
 <nav class="uk-navbar-container uk-padding-small" uk-navbar>
     <div class="uk-navbar-left">
         <div class="uk-logo uk-margin-small-right">
-            <img src="./assets/images/icon-logo-blue1.png" alt="">
+            <img *ngIf="!formIsValid; else isValid" data-src="./assets/images/icon-logo-blue1.png" alt="logo" uk-img>
+            <ng-template #isValid>
+                <a href="#" (click)="onClearForm()" class="uk-icon-button  uk-margin-small-right" uk-icon="arrow-left"></a>
+            </ng-template>
         </div>
         <app-searchs></app-searchs>
     </div>

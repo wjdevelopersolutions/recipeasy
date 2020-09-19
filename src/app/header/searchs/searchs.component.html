@@ -2,9 +2,24 @@
 <form class="uk-search uk-search-default" [formGroup]="searchForm" (ngSubmit)="onFormSubmit()">
     <button type="submit" uk-search-icon></button>
     <input formControlName="busqueda" class="uk-search-input" type="search" placeholder="Search...">
-    <div uk-drop="mode: click">
+    <div #ukDrop uk-drop="mode: click">
         <div class="uk-card uk-card-body uk-card-default">
-            <app-search-item *ngFor="let dbs of database" [dbs]="dbs"></app-search-item>
+
+            <div class="uk-no-recent" *ngIf="recentSearching.length < 1 && !searchForm.valid">
+                <img data-src="./assets/images/search.png" alt="no-search-logo" uk-img>
+                <p class="uk-margin-remove">No hay busquedas reciente</p>
+            </div>
+
+            <div *ngIf="recentSearching.length >= 1 && !searchForm.valid; else noRecentSearching">
+                <h3 class="uk-card-title">Busquedas recientes</h3>
+                <app-search-item *ngFor="let dbs of recentSearching" [dbs]="dbs"></app-search-item>
+            </div>
+
+            <ng-template #noRecentSearching>
+                <h3 *ngIf="recentSearching.length <= 1 && searchForm.valid" class="uk-card-title">Busqueda:</h3>
+                <app-search-item *ngFor="let dbs of database | searchbar:searchForm.value.busqueda:'hola'" [dbs]="dbs"></app-search-item>
+            </ng-template>
+
         </div>
     </div>
 </form>
