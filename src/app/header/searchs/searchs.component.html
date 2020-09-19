@@ -1,0 +1,10 @@
+
+<form class="uk-search uk-search-default">
+    <span uk-search-icon></span>
+    <input class="uk-search-input" type="search" placeholder="Search...">
+    <div uk-drop="mode: click">
+        <div class="uk-card uk-card-body uk-card-default">
+            <app-search-item *ngFor="let dbs of database" [dbs]="dbs"></app-search-item>
+        </div>
+    </div>
+</form>
