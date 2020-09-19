@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchsComponent } from './header/searchs/searchs.component';
 import { SearchItemComponent } from './header/searchs/search-item/search-item.component';
 import { SearchbarPipe } from './header/searchs/searchs.pipe';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SearchbarPipe } from './header/searchs/searchs.pipe';
     SearchbarPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

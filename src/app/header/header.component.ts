@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SearchsService} from './searchs/searchs.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _SearchsService: SearchsService
+  ) { }
 
   ngOnInit(): void {
+    console.log('');
   }
 
 }

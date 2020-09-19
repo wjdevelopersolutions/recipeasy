@@ -1,5 +1,6 @@
 import { SearchsService } from './searchs.service';
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-searchs',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./searchs.component.scss']
 })
 export class SearchsComponent implements OnInit {
-
+  searchForm: FormGroup;
   database: any[] = [
     {
       name: 'ana delia lopez',
@@ -31,7 +32,16 @@ export class SearchsComponent implements OnInit {
     private _SearchsService: SearchsService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+    this.searchForm = new FormGroup({
+      'busqueda': new FormControl(null, Validators.required)
+    });
+  }
+
+  onFormSubmit()
+  {
+    console.log(this.searchForm);
   }
 
 }
