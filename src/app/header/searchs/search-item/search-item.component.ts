@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Host } from '@angular/core';
+
+// NOTE: Esto es obligatorio para que el ng-content funcione
+import { SearchsComponent } from '../searchs.component';
 import { SearchsService } from '../searchs.service';
-declare var UIkit;
 
 @Component({
   selector: 'app-search-item',
@@ -11,16 +13,9 @@ export class SearchItemComponent implements OnInit {
 
   @Input('dbs') item;
 
-  constructor(
-    private _SearchsService: SearchsService
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  onAddRecentSearching()
-  {
-    this._SearchsService.addRecentSearching( this.item );
-    UIkit.drop(this._SearchsService.ukDrop).hide();
-  }
 
 }

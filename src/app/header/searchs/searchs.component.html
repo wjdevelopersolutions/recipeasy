@@ -6,18 +6,42 @@
         <div class="uk-card uk-card-body uk-card-default">
 
             <div class="uk-no-recent" *ngIf="recentSearching.length < 1 && !searchForm.valid">
-                <img data-src="./assets/images/search.png" alt="no-search-logo" uk-img>
-                <p class="uk-margin-remove">No hay busquedas reciente</p>
+                <!-- <img class="uk-icon uk-icon-image" src="./assets/images/search.png" alt="no-search-logo"> -->
+                <span class="uk-text-muted" uk-icon="icon: database; ratio: 3"></span>
+                <p class="uk-margin-remove uk-text-muted">No hay busquedas reciente</p>
             </div>
 
             <div *ngIf="recentSearching.length >= 1 && !searchForm.valid; else noRecentSearching">
-                <h3 class="uk-card-title">Busquedas recientes</h3>
-                <app-search-item *ngFor="let dbs of recentSearching" [dbs]="dbs"></app-search-item>
+                <h3 class="uk-card-title uk-text-muted">Busquedas recientes</h3>
+                <app-search-item *ngFor="let dbs of recentSearching; let i = index" [dbs]="dbs">
+                    <div class="uk-item">
+                        <a href="#" uk-grid (click)="onAddRecentSearching(dbs)">
+                            <div class="uk-width-1-4@m">
+                                <div class="uk-item-icon">
+                                    <img uk-img data-src="{{dbs.image}}" [alt]="dbs.name">
+                                </div>
+                            </div>
+                            <span class="uk-width-expand@m uk-text-capitalize uk-flex uk-flex-middle">{{ dbs.name }}</span>
+                            <a (click)="onDeleteSearching(i)" href="#" class="uk-icon-link uk-margin-small-right" uk-icon="close"></a>
+                        </a>
+                    </div>
+                </app-search-item>
             </div>
 
             <ng-template #noRecentSearching>
-                <h3 *ngIf="recentSearching.length <= 1 && searchForm.valid" class="uk-card-title">Busqueda:</h3>
-                <app-search-item *ngFor="let dbs of database | searchbar:searchForm.value.busqueda:'hola'" [dbs]="dbs"></app-search-item>
+                <h3 *ngIf="recentSearching.length <= 1 && searchForm.valid" class="uk-card-title uk-text-muted">Busqueda: <span class="uk-text-primary">{{ searchForm.value.busqueda }}</span></h3>
+                <app-search-item *ngFor="let dbs of database | searchbar:searchForm.value.busqueda:'hola'; let i = index" [dbs]="dbs">
+                    <div class="uk-item">
+                        <a href="#" uk-grid (click)="onAddRecentSearching(dbs)">
+                            <div class="uk-width-1-4@m">
+                                <div class="uk-item-icon">
+                                    <img uk-img data-src="{{dbs.image}}" [alt]="dbs.name">
+                                </div>
+                            </div>
+                            <span class="uk-width-expand@m uk-text-capitalize uk-flex uk-flex-middle">{{ dbs.name }}</span>
+                        </a>
+                    </div>
+                </app-search-item>
             </ng-template>
 
         </div>

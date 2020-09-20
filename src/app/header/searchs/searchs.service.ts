@@ -8,7 +8,6 @@ export class SearchsService implements OnInit {
     searchForm = new Subject<FormGroup>();
     databaseChange = new Subject<any[]>();
     recentSearchingChanges = new Subject<any[]>();
-    ukDrop: ElementRef;
 
     recentSearching: any[] = [];
     database: any[] = [
@@ -67,15 +66,24 @@ export class SearchsService implements OnInit {
     constructor()
     {}
 
-    addRecentSearching( data: any )
+    addRecentSearching( data: {name: string, image: string} )
     {
-      this.recentSearching.push( data );
+      if ( this.recentSearching.includes(data) )
+         return;
+      else
+         this.recentSearching.push( data );
+         this.recentSearchingChanges.next(this.recentSearching.slice());
+    }
+
+    deleteRecentSearching(i: number) 
+    {
+      this.recentSearching.splice(i, 1);
       this.recentSearchingChanges.next(this.recentSearching.slice());
     }
 
     ngOnInit()
     {
-      console.log(this.ukDrop)
+   
     }
 
 

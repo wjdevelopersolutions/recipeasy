@@ -1,0 +1,29 @@
+<div uk-grid>
+    <div class="uk-profile">
+        <div class="uk-profile__img">
+            <img src="./assets/images/face01.png" alt="">
+        </div>
+        <span>Wilson</span>
+    </div>
+    <div>
+        <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="plus"></a>
+        <a href="" class="uk-icon-button  uk-margin-small-right" uk-icon="bell"></a>
+        <a href="" (click)="onToggleMenu($event)" class="uk-icon-button" uk-icon="more"></a>
+        <!-- <div uk-drop>
+            <div class="uk-card uk-card-body uk-card-default">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        </div> -->
+        <div #offCanvas id="offcanvas-overlay" uk-offcanvas="overlay: true">
+            <div class="uk-offcanvas-bar">
+        
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+        
+        
+                <h3>Title</h3>
+        
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        
+            </div>
+        </div>
+    </div>
+
+</div>

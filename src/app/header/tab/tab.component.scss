@@ -1,0 +1,19 @@
+.uk-tab {
+    margin: 0;
+    height: 73px;
+    .uk-active>a {
+        color: #1e87f0;
+    }
+    li {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        a {
+            height: 61px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+        }
+    }
+}
