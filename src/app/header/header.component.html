@@ -1,4 +1,5 @@
 <nav class="uk-navbar-container uk-padding-small" uk-navbar>
+
     <div class="uk-navbar-left">
         <div class="uk-logo uk-margin-small-right">
             <img *ngIf="!formIsValid; else isValid" data-src="./assets/images/icon-logo-blue1.png" alt="logo" uk-img>
@@ -8,7 +9,13 @@
         </div>
         <app-searchs></app-searchs>
     </div>
-    <div class="uk-navbar-center">...</div>
-    <div class="uk-navbar-right">...</div>
+
+    <div class="uk-navbar-center">
+        <app-tab></app-tab>
+    </div>
+
+    <div class="uk-navbar-right">
+        <app-buttons></app-buttons>
+    </div>
 </nav>
 

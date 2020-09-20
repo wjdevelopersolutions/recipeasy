@@ -18,10 +18,15 @@ export class SearchbarPipe implements PipeTransform {
           }
 
           if (data.name.indexOf(termino) >= 0) {
+
+            // Shorted name string
             if ( data.name.length > 15 ) 
                data.name = `${data.name.slice(0, 15)} ...`;
+
             valueReturned.push(data);
-          } 
+
+          }
+          
 
         });
         

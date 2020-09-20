@@ -7,6 +7,8 @@ import { SearchsComponent } from './header/searchs/searchs.component';
 import { SearchItemComponent } from './header/searchs/search-item/search-item.component';
 import { SearchbarPipe } from './header/searchs/searchs.pipe';
 import {ReactiveFormsModule} from '@angular/forms';
+import { TabComponent } from './header/tab/tab.component';
+import { ButtonsComponent } from './header/buttons/buttons.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     SearchsComponent,
     SearchItemComponent,
-    SearchbarPipe
+    SearchbarPipe,
+    TabComponent,
+    ButtonsComponent
   ],
   imports: [
     BrowserModule,
