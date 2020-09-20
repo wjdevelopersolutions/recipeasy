@@ -6,13 +6,13 @@
         <div class="uk-card uk-card-body uk-card-default">
 
             <div class="uk-no-recent" *ngIf="recentSearching.length < 1 && !searchForm.valid">
-                <img class="uk-icon uk-icon-image" src="./assets/images/search.png" alt="no-search-logo">
-                <!-- <span uk-icon="icon: database"></span> -->
-                <p class="uk-margin-remove">No hay busquedas reciente</p>
+                <!-- <img class="uk-icon uk-icon-image" src="./assets/images/search.png" alt="no-search-logo"> -->
+                <span class="uk-text-muted" uk-icon="icon: database; ratio: 3"></span>
+                <p class="uk-margin-remove uk-text-muted">No hay busquedas reciente</p>
             </div>
 
             <div *ngIf="recentSearching.length >= 1 && !searchForm.valid; else noRecentSearching">
-                <h3 class="uk-card-title">Busquedas recientes</h3>
+                <h3 class="uk-card-title uk-text-muted">Busquedas recientes</h3>
                 <app-search-item *ngFor="let dbs of recentSearching; let i = index" [dbs]="dbs">
                     <div class="uk-item">
                         <a href="#" uk-grid (click)="onAddRecentSearching(dbs)">
@@ -29,7 +29,7 @@
             </div>
 
             <ng-template #noRecentSearching>
-                <h3 *ngIf="recentSearching.length <= 1 && searchForm.valid" class="uk-card-title">Busqueda: {{ searchForm.value.busqueda }}</h3>
+                <h3 *ngIf="recentSearching.length <= 1 && searchForm.valid" class="uk-card-title uk-text-muted">Busqueda: <span class="uk-text-primary">{{ searchForm.value.busqueda }}</span></h3>
                 <app-search-item *ngFor="let dbs of database | searchbar:searchForm.value.busqueda:'hola'; let i = index" [dbs]="dbs">
                     <div class="uk-item">
                         <a href="#" uk-grid (click)="onAddRecentSearching(dbs)">

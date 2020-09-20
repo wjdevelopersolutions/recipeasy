@@ -2,19 +2,19 @@
 
     <div class="uk-navbar-left">
         <div class="uk-logo uk-margin-small-right">
-            <img *ngIf="!formIsValid; else isValid" data-src="./assets/images/icon-logo-blue1.png" alt="logo" uk-img>
+            <img *ngIf="!formIsValid; else isValid" data-src="./assets/images/recipeasy-logo-cuadrado-blue.png" alt="logo" uk-img>
             <ng-template #isValid>
                 <a href="#" (click)="onClearForm()" class="uk-icon-button  uk-margin-small-right" uk-icon="arrow-left"></a>
             </ng-template>
         </div>
-        <app-searchs></app-searchs>
+        <app-searchs class="uk-visible@m"></app-searchs>
     </div>
 
-    <div class="uk-navbar-center">
+    <div class="uk-navbar-center uk-visible@m uk-visible@l">
         <app-tab></app-tab>
     </div>
 
-    <div class="uk-navbar-right">
+    <div class="uk-navbar-right uk-flex uk-flex-right">
         <app-buttons></app-buttons>
     </div>
 </nav>

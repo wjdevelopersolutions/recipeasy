@@ -12,6 +12,7 @@ declare var UIkit;
 export class SearchsComponent implements OnInit, OnDestroy {
 
   @ViewChild('ukDrop') ukDrop: ElementRef;
+  @ViewChild('ukIconDatabase') ukIconDatabase: ElementRef;
 
   searchForm: FormGroup;
 
@@ -30,6 +31,9 @@ export class SearchsComponent implements OnInit, OnDestroy {
     this.searchForm = new FormGroup({
       'busqueda': new FormControl(null, Validators.required)
     });
+    
+    console.log(this.ukIconDatabase)
+    UIkit.icon(this.ukIconDatabase, { ratio: 30 });
     
     this.subscriptionSearch = this.searchForm.valueChanges
         .subscribe( termino => {

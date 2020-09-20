@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+declare var UIkit;
 
 @Component({
   selector: 'app-buttons',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
 
+  @ViewChild('offCanvas') offCanvas: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onToggleMenu(event: Event) {
+
+    event.preventDefault();
+
+    UIkit.offcanvas(this.offCanvas.nativeElement).show();
   }
 
 }
